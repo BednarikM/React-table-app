@@ -1,0 +1,128 @@
+@use "../variables" as *;
+
+.table {
+  padding: 2rem 5rem;
+  width: 70rem;
+  box-shadow: rgba(black, 0.35) 0px 5px 15px;
+  background-color: $color-blue-petrol-dark;
+  border-radius: 5px;
+  position: relative;
+  z-index: 0;
+
+  &__loader-wrapper {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba($color-blue-petrol-dark, 0.8);
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+
+  &__content {
+    border-collapse: collapse;
+    z-index: 100;
+    width: 100%;
+  }
+
+  &__header {
+    background-color: transparent;
+
+    th {
+      padding: 1rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid $color-gray-dark;
+      text-align: center;
+    }
+
+    $column-widths: (
+      1: 6rem,
+      2: 20rem,
+      3: 10rem,
+      4: 10rem,
+      5: 14rem,
+    );
+
+    @each $index, $width in $column-widths {
+      th:nth-child(#{$index}) {
+        width: $width;
+        @if $index == 2 {
+          text-align: start;
+        }
+      }
+    }
+  }
+
+  &__body {
+    color: $color-white;
+    font-weight: bold;
+
+    tr {
+      height: 4rem;
+
+      td {
+        padding: 0.5rem 2rem;
+      }
+
+      td:not(:nth-child(2)) {
+        text-align: center;
+      }
+
+      &:hover {
+        color: $color-gray-dark;
+        background-color: $color-white;
+      }
+    }
+  }
+
+  &__banned {
+    vertical-align: middle;
+
+    &-shape {
+      display: inline-flex;
+      border-radius: 50px;
+      background-color: $color-white;
+      width: 15px;
+      height: 15px;
+    }
+
+    &--true {
+      & .table__banned-shape {
+        background-color: $color-red;
+      }
+    }
+
+    &--false {
+      & .table__banned-shape {
+        background-color: $color-green;
+      }
+    }
+  }
+
+  &__button-add-row {
+    width: 100%;
+    height: fit-content;
+    margin: 3rem 0;
+    font-size: 2rem;
+    padding: 1rem;
+    font-weight: bold;
+    color: $color-white;
+    background-color: $color-blue-petrol;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    box-shadow: rgba(black, 0.2) 0px 5px 20px 0px;
+
+    &:hover {
+      color: $color-blue-petrol;
+      background-color: $color-white;
+    }
+  }
+}

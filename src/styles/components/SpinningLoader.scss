@@ -1,0 +1,35 @@
+@use "../variables" as *;
+
+.spinning-loader {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  justify-content: center;
+  padding: 5rem 2rem;
+
+  &__text {
+    font-size: 2.8rem;
+    font-weight: bold;
+  }
+
+  &__circle {
+    animation: spin 2s linear infinite;
+    border: 16px solid transparent;
+    border-top-color: $color-loader-sector;
+    border-right-color: $color-loader-sector;
+    border-bottom-color: $color-loader-sector;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

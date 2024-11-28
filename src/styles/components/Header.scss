@@ -1,0 +1,80 @@
+@use "../variables.scss" as *;
+
+.header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 2rem;
+  background-color: $color-blue-petrol-dark;
+  margin-bottom: 2rem;
+  box-shadow: rgba(black, 0.35) 0px 5px 15px;
+
+  &__content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 2rem;
+    max-width: 118rem;
+    padding: 2rem;
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+
+    &:hover {
+      color: $color-gold;
+    }
+  }
+
+  &__navlink-list {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  &__navlink {
+    cursor: pointer;
+    display: inline-flex;
+    padding: 0.5rem 1rem;
+    position: relative;
+
+    &--is-active {
+      .header__navlink-text {
+        color: $color-gold;
+      }
+    }
+
+    &-text {
+      color: $color-white;
+      font-size: 2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: color 300ms;
+      position: relative;
+
+      &::after {
+        background-color: $color-gold;
+        content: "";
+        height: 5px;
+        width: 100%;
+        left: 0;
+        bottom: -10px;
+        position: absolute;
+        transform: scaleX(0);
+        transition: transform 300ms ease;
+      }
+    }
+
+    &:hover:not(&--is-active) {
+      .header__navlink-text::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+}

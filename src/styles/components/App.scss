@@ -1,0 +1,20 @@
+@use "../variables.scss" as *;
+
+.app-container,
+.page {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100%;
+  margin: 0;
+}
+
+.page {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding: 2rem 2rem 8rem;
+  }
+}

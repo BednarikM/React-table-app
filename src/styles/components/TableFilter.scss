@@ -1,0 +1,124 @@
+@use "../variables" as *;
+
+.table-filter {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0 3rem;
+  background-color: $color-blue-petrol;
+  border-radius: 5px;
+  box-shadow: rgba(black, 0.2) 0px 5px 20px 0px;
+  font-weight: bold;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+  }
+
+  &__title {
+    font-size: 2rem;
+  }
+
+  &__icon-container {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background-color: $color-blue-petrol-dark;
+    cursor: pointer;
+
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+
+    &:hover {
+      background-color: $color-gold;
+
+      svg.fa-chevron-down,
+      svg.fa-chevron-up {
+        color: $color-blue-petrol-dark;
+      }
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1.5rem 2.5rem 2.5rem;
+    gap: 1.5rem;
+  }
+
+  &__search-input {
+    width: 50%;
+    font-size: 1.6rem;
+  }
+
+  &__search-input-element {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: $color-blue-petrol-dark;
+
+    &::-webkit-search-cancel-button {
+      cursor: pointer;
+    }
+
+    &:disabled {
+      background-color: $color-gray-light;
+      cursor: not-allowed;
+      opacity: 0.6;
+
+      &::placeholder {
+        color: black;
+      }
+    }
+  }
+
+  &__radio-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    &-field {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    &-label {
+      margin-left: 1rem;
+    }
+
+    &-element {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: white;
+      cursor: pointer;
+      margin: 0;
+
+      &:checked {
+        background-color: $color-gold;
+      }
+    }
+  }
+}
