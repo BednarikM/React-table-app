@@ -116,6 +116,7 @@ export type TTable = {
 
 export type TTableFilter = {
   filterQuery: string;
+  setFilterQuery: Dispatch<SetStateAction<TTableFilter["filterQuery"]>>;
   filteredProperty: string;
   tableRadioOptions: TRadioOption[];
   handleRadioChange: (event: React.ChangeEvent<HTMLInputElement>) => void;

@@ -24,6 +24,7 @@
     height: 100%;
     padding: 4rem;
     background-color: rgba($color-blue-petrol-dark, 0.9);
+    z-index: 100;
   }
 
   &__form {
@@ -179,5 +180,9 @@
     &:hover {
       color: $color-red;
     }
+  }
+
+  &__required {
+    color: $color-red;
   }
 }

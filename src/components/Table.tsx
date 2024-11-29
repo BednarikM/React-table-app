@@ -3,6 +3,8 @@ import { useContext, useState, useMemo, useEffect } from "react";
 
 /* Third-party ****************************************************************/
 import { useRevalidator } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
 
 /* Internal *******************************************************************/
 import { FormModalContext } from "../context/FormModalContext";
@@ -101,6 +103,7 @@ export default function Table({ pageRoute, headers, fetchedData }: TTable): JSX.
         )}
         <TableFilter
           filterQuery={filterQuery}
+          setFilterQuery={setFilterQuery}
           filteredProperty={filteredProperty}
           tableRadioOptions={tableRadioOptions}
           handleRadioChange={handleRadioChange}

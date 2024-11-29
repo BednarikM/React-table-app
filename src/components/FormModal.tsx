@@ -112,7 +112,9 @@ export default function FormModal({ pageRoute }: { pageRoute: TPageRoute }): JSX
       <div className="form-modal">
         <form className="form-modal__form" onSubmit={(e) => handleFormSubmit(e, currentRowData.id)}>
           <div className="form-modal__input-field form-modal__input-field--name">
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">
+              Name<span className="form-modal__required">*</span>
+            </label>
             <input id="name" name="name" value={currentRowData?.name} onChange={handleInputChange} />
             {errors.name && (
               <div className="form-modal__field-error">
@@ -124,7 +126,9 @@ export default function FormModal({ pageRoute }: { pageRoute: TPageRoute }): JSX
           {pageRoute === "users" && (
             <>
               <div className="form-modal__select-field form-modal__select-field--gender">
-                <label htmlFor="gender">Gender</label>
+                <label htmlFor="gender">
+                  Gender<span className="form-modal__required">*</span>
+                </label>
                 <select name="gender" id="gender" value={(currentRowData as TUser).gender} onChange={handleInputChange}>
                   <option value="" disabled />
                   <option value="male">male</option>
@@ -153,7 +157,9 @@ export default function FormModal({ pageRoute }: { pageRoute: TPageRoute }): JSX
           {pageRoute === "animals" && (
             <>
               <div className="form-modal__select-field form-modal__select-field--animal-type">
-                <label htmlFor="animal-type">Animal type</label>
+                <label htmlFor="animal-type">
+                  Animal type<span className="form-modal__required">*</span>
+                </label>
                 <select
                   name="type"
                   id="animal-type"
@@ -173,7 +179,9 @@ export default function FormModal({ pageRoute }: { pageRoute: TPageRoute }): JSX
               </div>
 
               <div className="form-modal__input-field form-modal__input-field--age">
-                <label htmlFor="age">Age</label>
+                <label htmlFor="age">
+                  Age<span className="form-modal__required">*</span>
+                </label>
                 <input
                   type="number"
                   id="age"

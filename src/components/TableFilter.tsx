@@ -17,6 +17,7 @@ import "../styles/components/TableFilter.scss";
 /* Component FNC **************************************************************/
 export default function TableFilter({
   filterQuery,
+  setFilterQuery,
   filteredProperty,
   tableRadioOptions,
   handleSearchChange,
@@ -44,6 +45,9 @@ export default function TableFilter({
               disabled={filteredProperty === "none"}
               onChange={handleSearchChange}
             />
+            <button className="table-filter__button-clear" onClick={() => setFilterQuery("")}>
+              Clear
+            </button>
           </div>
           <RadioBtnGroup
             parentClass="table-filter"

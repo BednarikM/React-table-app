@@ -22,7 +22,7 @@ export default function ActionPanel({
       {pageRoute === "users" && "banned" in item && (
         <FontAwesomeIcon
           icon={item.banned ? faPlus : faBan}
-          onClick={() => handleActionBtn(item.id, "PATCH", { banned: item.banned })}
+          onClick={() => handleActionBtn(item.id, "PATCH", { banned: !item.banned })}
         />
       )}
       <FontAwesomeIcon icon={faPenToSquare} onClick={() => handleFormModalTrigger(item, FormModalActionEnum.EDIT)} />

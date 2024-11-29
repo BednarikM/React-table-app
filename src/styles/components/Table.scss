@@ -1,7 +1,11 @@
 @use "../variables" as *;
 
 .table {
-  padding: 2rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem;
   width: 70rem;
   box-shadow: rgba(black, 0.35) 0px 5px 15px;
   background-color: $color-blue-petrol-dark;
@@ -18,10 +22,12 @@
     top: 0;
     left: 0;
     background-color: rgba($color-blue-petrol-dark, 0.8);
+    z-index: 110;
   }
 
   &__wrapper {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     position: relative;
   }
@@ -121,7 +127,7 @@
     box-shadow: rgba(black, 0.2) 0px 5px 20px 0px;
 
     &:hover {
-      color: $color-blue-petrol;
+      color: $color-blue-petrol-dark;
       background-color: $color-white;
     }
   }
