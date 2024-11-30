@@ -1,8 +1,8 @@
 /* Internal *******************************************************************/
-import { TUser, TAnimal, TTableBody } from "../typescript/schemasAndTypes.ts";
+import { TUser, TAnimal, TTableBody } from "../../typescript/schemasAndTypes.ts";
 
 /* Components *****************************************************************/
-import ActionPanel from "./ActionPanel.tsx";
+import TableAction from "./TableAction.tsx";
 
 /* Component FNC **************************************************************/
 export default function TableBody({
@@ -30,7 +30,7 @@ export default function TableBody({
             if (key === "action") {
               return (
                 <td key={key} className="table__action-panel">
-                  <ActionPanel
+                  <TableAction
                     pageRoute={pageRoute}
                     item={item}
                     handleActionBtn={handleActionBtn}

@@ -101,7 +101,7 @@ export type TRadioOption = {
 };
 
 export type TRadioGroup = {
-  parentClass: string;
+  title?: string;
   options: TRadioOption[];
   compareValue?: string;
   handleRadioChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -131,8 +131,28 @@ export type TTableBody = {
   handleFormModalTrigger: (rowData: TRowData, action: FormModalActionEnum) => void;
 };
 
+/* TYPE INPUTS *****************************************************************/
+type TBaseInput = {
+  id: string;
+  name: string;
+  label: string;
+  required?: boolean;
+  handleInputChange: (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  error?: string;
+};
+
+export type TCustomInput = TBaseInput & {
+  type?: string;
+  value: string | number;
+};
+
+export type TSelectInput = TBaseInput & {
+  value: string;
+  options: string[];
+};
+
 /* TYPE FORM ACTION ***********************************************************/
-export type TActionPanel = {
+export type TTableAction = {
   pageRoute: string;
   item: TRowData;
   handleActionBtn: (id: string, method: "PATCH" | "DELETE", body?: object) => void;

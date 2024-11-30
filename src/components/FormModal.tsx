@@ -1,5 +1,5 @@
 /* React **********************************************************************/
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 /* Third-party ****************************************************************/
 import { useRevalidator } from "react-router-dom";
@@ -12,7 +12,9 @@ import { fetchUtil } from "../utils/utils";
 import { TUser, TAnimal, UserFormSchema, AnimalFormSchema, TPageRoute, TRowData } from "../typescript/schemasAndTypes";
 
 /* Components *****************************************************************/
-import RadioBtnGroup from "./RadioBtnGroup";
+import CustomInput from "./inputs/CustomInput";
+import SelectInput from "./inputs/SelectInput";
+import RadioGroup from "./inputs/RadioGroup";
 
 /* Styles *********************************************************************/
 import "../styles/components/FormModal.scss";
@@ -26,7 +28,7 @@ export default function FormModal({ pageRoute }: { pageRoute: TPageRoute }): JSX
 
   const revalidator = useRevalidator();
 
-  const formModalRadioOptions = [
+  const radioGroupOptions = [
     { id: "no", name: "banned", label: "No", value: "false", description: "is not banned" },
     { id: "yes", name: "banned", label: "Yes", value: "true", description: "is banned" },
   ];
@@ -111,90 +113,55 @@ export default function FormModal({ pageRoute }: { pageRoute: TPageRoute }): JSX
     >
       <div className="form-modal">
         <form className="form-modal__form" onSubmit={(e) => handleFormSubmit(e, currentRowData.id)}>
-          <div className="form-modal__input-field form-modal__input-field--name">
-            <label htmlFor="name">
-              Name<span className="form-modal__required">*</span>
-            </label>
-            <input id="name" name="name" value={currentRowData?.name} onChange={handleInputChange} />
-            {errors.name && (
-              <div className="form-modal__field-error">
-                <p className="form-modal__field-error-text">{errors.name}</p>
-              </div>
-            )}
-          </div>
+          <CustomInput
+            id="name"
+            name="name"
+            label="Name"
+            value={currentRowData?.name}
+            error={errors.name}
+            handleInputChange={handleInputChange}
+          />
 
           {pageRoute === "users" && (
             <>
-              <div className="form-modal__select-field form-modal__select-field--gender">
-                <label htmlFor="gender">
-                  Gender<span className="form-modal__required">*</span>
-                </label>
-                <select name="gender" id="gender" value={(currentRowData as TUser).gender} onChange={handleInputChange}>
-                  <option value="" disabled />
-                  <option value="male">male</option>
-                  <option value="female">female</option>
-                  <option value="others">others</option>
-                </select>
-                {errors.gender && (
-                  <div className="form-modal__field-error">
-                    <p className="form-modal__field-error-text">{errors.gender}</p>
-                  </div>
-                )}
-              </div>
-
-              <div className="form-modal__radio-buttons-container">
-                <p className="form-modal__radio-buttons-title">Is user banned?</p>
-                <RadioBtnGroup
-                  parentClass="form-modal"
-                  options={formModalRadioOptions}
-                  compareValue={(currentRowData as TUser).banned.toString()}
-                  handleRadioChange={handleRadioChange}
-                />
-              </div>
+              <SelectInput
+                id="gender"
+                name="gender"
+                label="Gender"
+                value={(currentRowData as TUser).gender}
+                options={["male", "female", "other"]}
+                error={errors.gender}
+                handleInputChange={handleInputChange}
+              />
+              <RadioGroup
+                title="Is user banned?"
+                options={radioGroupOptions}
+                compareValue={(currentRowData as TUser).banned.toString()}
+                handleRadioChange={handleRadioChange}
+              />
             </>
           )}
 
           {pageRoute === "animals" && (
             <>
-              <div className="form-modal__select-field form-modal__select-field--animal-type">
-                <label htmlFor="animal-type">
-                  Animal type<span className="form-modal__required">*</span>
-                </label>
-                <select
-                  name="type"
-                  id="animal-type"
-                  value={(currentRowData as TAnimal).type}
-                  onChange={handleInputChange}
-                >
-                  <option value="" disabled />
-                  <option value="cat">cat</option>
-                  <option value="dog">dog</option>
-                  <option value="other">other</option>
-                </select>
-                {errors.type && (
-                  <div className="form-modal__field-error">
-                    <p className="form-modal__field-error-text">{errors.type}</p>
-                  </div>
-                )}
-              </div>
-
-              <div className="form-modal__input-field form-modal__input-field--age">
-                <label htmlFor="age">
-                  Age<span className="form-modal__required">*</span>
-                </label>
-                <input
-                  type="number"
-                  id="age"
-                  name="age"
-                  value={(currentRowData as TAnimal).age}
-                  onChange={handleInputChange}
-                />
-                {errors.age && (
-                  <div className="form-modal__field-error">
-                    <p className="form-modal__field-error-text">{errors.age}</p>
-                  </div>
-                )}
-              </div>
+              <SelectInput
+                id="type"
+                name="type"
+                label="Animal-type"
+                value={(currentRowData as TAnimal).type}
+                options={["cat", "dog", "other"]}
+                error={errors.type}
+                handleInputChange={handleInputChange}
+              />
+              <CustomInput
+                type="number"
+                id="age"
+                name="age"
+                label="Age"
+                value={(currentRowData as TAnimal).age}
+                error={errors.age}
+                handleInputChange={handleInputChange}
+              />
             </>
           )}
 

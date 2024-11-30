@@ -3,8 +3,6 @@ import { useContext, useState, useMemo, useEffect } from "react";
 
 /* Third-party ****************************************************************/
 import { useRevalidator } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
 
 /* Internal *******************************************************************/
 import { FormModalContext } from "../context/FormModalContext";
@@ -13,9 +11,9 @@ import { TRowData, TTable, TRowDataArray } from "../typescript/schemasAndTypes.t
 import { FormModalActionEnum } from "../typescript/formModalEnum.ts";
 
 /* Components *****************************************************************/
-import TableFilter from "./TableFilter.tsx";
-import TableHeader from "./TableHeader.tsx";
-import TableBody from "./TableBody.tsx";
+import TableFilter from "./tableParts/TableFilter.tsx";
+import TableHeader from "./tableParts/TableHeader.tsx";
+import TableBody from "./tableParts/TableBody.tsx";
 import FormModal from "./FormModal.tsx";
 import SpinningLoader from "./SpinningLoader.tsx";
 
@@ -62,7 +60,6 @@ export default function Table({ pageRoute, headers, fetchedData }: TTable): JSX.
 
   /* Functions ****************************************************************/
   function handleSearchChange(event: React.ChangeEvent<HTMLInputElement>) {
-    console.log(event.target.value);
     setFilterQuery(event.target.value);
   }
 

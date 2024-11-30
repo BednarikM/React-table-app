@@ -8,7 +8,7 @@ import AnimalsPage from "./pages/AnimalsPage.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
 
 /* Components *****************************************************************/
-import Layout from "./Layout/Layout.tsx";
+import Layout from "./layout/Layout.tsx";
 
 /* Styles *********************************************************************/
 import "./styles/components/App.scss";

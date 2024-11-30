@@ -6,13 +6,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 /* Internal *******************************************************************/
-import { TTableFilter } from "../typescript/schemasAndTypes.ts";
+import { TTableFilter } from "../../typescript/schemasAndTypes.ts";
 
 /* Components *****************************************************************/
-import RadioBtnGroup from "./RadioBtnGroup";
+import RadioGroup from "../inputs/RadioGroup.tsx";
 
 /* Styles *********************************************************************/
-import "../styles/components/TableFilter.scss";
+import "../../styles/components/tableParts/TableFilter.scss";
 
 /* Component FNC **************************************************************/
 export default function TableFilter({
@@ -49,7 +49,7 @@ export default function TableFilter({
               Clear
             </button>
           </div>
-          <RadioBtnGroup
+          <RadioGroup
             parentClass="table-filter"
             options={tableRadioOptions}
             handleRadioChange={handleRadioChange}

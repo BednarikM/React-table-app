@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faBan, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 /* Internal *******************************************************************/
-import { TActionPanel } from "../typescript/schemasAndTypes.ts";
-import { FormModalActionEnum } from "../typescript/formModalEnum.ts";
+import { TTableAction } from "../../typescript/schemasAndTypes.ts";
+import { FormModalActionEnum } from "../../typescript/formModalEnum.ts";
 
 /* Styles *********************************************************************/
-import "../styles/components/ActionPanel.scss";
+import "../../styles/components/tableParts/TableAction.scss";
 
 /* Component FNC **************************************************************/
 export default function ActionPanel({
@@ -15,10 +15,10 @@ export default function ActionPanel({
   item,
   handleActionBtn,
   handleFormModalTrigger,
-}: TActionPanel): JSX.Element {
+}: TTableAction): JSX.Element {
   /* Jsx **********************************************************************/
   return (
-    <div className="action-panel">
+    <div className="table-action">
       {pageRoute === "users" && "banned" in item && (
         <FontAwesomeIcon
           icon={item.banned ? faPlus : faBan}

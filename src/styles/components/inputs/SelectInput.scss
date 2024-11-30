@@ -1,0 +1,36 @@
+@use "../../variables.scss" as *;
+
+.select-input {
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__required {
+    color: $color-red;
+  }
+
+  &__element {
+    width: 100%;
+    font-size: 1.6rem;
+    padding: 0.8rem 1rem;
+    border-radius: 5px;
+    border: 2px solid $color-blue-dark;
+    margin-bottom: 0.5rem;
+  }
+
+  &__error {
+    background-color: $color-red-light;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 5px;
+
+    &-text {
+      font-size: 1.4rem;
+      color: $color-red-dark;
+    }
+  }
+}
