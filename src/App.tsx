@@ -1,5 +1,13 @@
+/* React **********************************************************************/
+import { useContext } from "react";
+
+/* Third-party ****************************************************************/
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ZodTypeAny } from "zod";
+
+/* Internal *******************************************************************/
+import { GlobalConstContext } from "./context/GlobalConstContext.tsx";
+import { AnimalArraySchema, UserArraySchema } from "./typescript/schemasAndTypes.ts";
 
 /* Pages **********************************************************************/
 import HomePage from "./pages/HomePage.tsx";
@@ -13,14 +21,14 @@ import Layout from "./layout/Layout.tsx";
 /* Styles *********************************************************************/
 import "./styles/components/App.scss";
 
-/* ZOD ************************************************************************/
-import { AnimalArraySchema, UserArraySchema } from "./typescript/schemasAndTypes.ts";
-
-/* SDefinition ****************************************************************/
+/* Component FNC **************************************************************/
 export default function App() {
+  const { apiUrl } = useContext(GlobalConstContext)!;
+
+  /* Functions ****************************************************************/
   function dataLoader(dataType: string, schema: ZodTypeAny) {
     return async () => {
-      const response = await fetch(`https://inqool-interview-api.vercel.app/api/${dataType}`);
+      const response = await fetch(`${apiUrl}${dataType}`);
       const data = await response.json();
       const parsedData = schema.safeParse(data);
 
@@ -61,6 +69,7 @@ export default function App() {
     },
   ]);
 
+  /* Jsx **********************************************************************/
   return (
     <div className="app-container">
       <RouterProvider router={router} />

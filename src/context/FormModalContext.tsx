@@ -1,7 +1,9 @@
+/* React **********************************************************************/
 import { createContext, useState } from "react";
+
+/* Internal *******************************************************************/
 import { TRowData, TformModalAction, TFormModalContext } from "../typescript/schemasAndTypes";
 
-/* DEFAULT ROW DATA ***********************************************************/
 const defaultRowData: TFormModalContext["defaultRowData"] = {
   users: {
     id: "",
@@ -17,10 +19,10 @@ const defaultRowData: TFormModalContext["defaultRowData"] = {
   },
 };
 
-/* CONTEXT ********************************************************************/
+/* Context ********************************************************************/
 export const FormModalContext = createContext<TFormModalContext | null>(null);
 
-/* PROVIDER *******************************************************************/
+/* Provider *******************************************************************/
 export const FormModalProvider = ({ children }: { children: JSX.Element }) => {
   const [formModalOpened, setFormModalOpened] = useState(false);
   const [formModalAction, setformModalAction] = useState<TformModalAction>("");

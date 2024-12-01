@@ -1,5 +1,5 @@
 /* React **********************************************************************/
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 
 /* Third-party ****************************************************************/
 import { useRevalidator } from "react-router-dom";
@@ -26,6 +26,7 @@ export default function FormModal({ pageRoute }: { pageRoute: TPageRoute }): JSX
   const [currentRowData, setCurrentRowData] = useState<TRowData>(rowContextData!);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
+  const apiUrl = process.env.REACT_APP_API_URL;
   const revalidator = useRevalidator();
 
   const radioGroupOptions = [
@@ -81,11 +82,11 @@ export default function FormModal({ pageRoute }: { pageRoute: TPageRoute }): JSX
 
     const { url, method } = itemId
       ? {
-          url: `https://inqool-interview-api.vercel.app/api/${pageRoute}/${itemId}`,
+          url: `${apiUrl}${pageRoute}/${itemId}`,
           method: "PATCH" as const,
         }
       : {
-          url: `https://inqool-interview-api.vercel.app/api/${pageRoute}`,
+          url: `${apiUrl}${pageRoute}`,
           method: "POST" as const,
         };
 

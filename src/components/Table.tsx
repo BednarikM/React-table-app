@@ -9,6 +9,7 @@ import { FormModalContext } from "../context/FormModalContext";
 import { fetchUtil } from "../utils/utils";
 import { TRowData, TTable, TRowDataArray } from "../typescript/schemasAndTypes.ts";
 import { FormModalActionEnum } from "../typescript/formModalEnum.ts";
+import { GlobalConstContext } from "../context/GlobalConstContext.tsx";
 
 /* Components *****************************************************************/
 import TableFilter from "./tableParts/TableFilter.tsx";
@@ -28,6 +29,7 @@ export default function Table({ pageRoute, headers, fetchedData }: TTable): JSX.
   const [filteredProperty, setFilteredProperty] = useState("none");
   const [filterQuery, setFilterQuery] = useState("");
 
+  const { apiUrl } = useContext(GlobalConstContext)!;
   const revalidator = useRevalidator();
   const { state } = revalidator; // Loader used to display skill and wanted to try it, with the useEffect fetch it would be less pain and faster fetch i guess
 
@@ -80,7 +82,7 @@ export default function Table({ pageRoute, headers, fetchedData }: TTable): JSX.
 
   async function handleActionBtn(userId: string, method: "PATCH" | "DELETE", body?: Record<string, any> | undefined) {
     try {
-      const url = `https://inqool-interview-api.vercel.app/api/${pageRoute}/${userId}`;
+      const url = `${apiUrl}${pageRoute}/${userId}`;
       const data = await fetchUtil<typeof body>(url, method, body);
       revalidator.revalidate();
       console.log("handleActionBtn response", data);

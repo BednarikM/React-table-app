@@ -1,5 +1,10 @@
+/* React **********************************************************************/
 import { Dispatch, SetStateAction } from "react";
+
+/* Third-party ****************************************************************/
 import { z } from "zod";
+
+/* Internal *******************************************************************/
 import { FormModalActionEnum } from "./formModalEnum";
 
 /* BASE SCHEMA ****************************************************************/
@@ -161,6 +166,11 @@ export type TTableAction = {
 
 /* TYPE FORM ACTION ***********************************************************/
 export type TformModalAction = FormModalActionEnum | "";
+
+/* TYPE GLOBAL CONST CONTEXT **************************************************/
+export type TGlobalConstContext = {
+  apiUrl: string | undefined;
+};
 
 /* TYPE FORM MODAL CONTEXT ****************************************************/
 export type TFormModalContext = {

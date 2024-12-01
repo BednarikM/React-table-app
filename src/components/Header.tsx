@@ -15,7 +15,7 @@ export default function Header(): JSX.Element {
         <Link to="/" className="header__title">
           React table app
         </Link>
-        <ul className="header__navlink-list">
+        <div className="header__navlink-list">
           {navLinksName.map((item) => {
             return (
               <NavLink
@@ -27,7 +27,7 @@ export default function Header(): JSX.Element {
               </NavLink>
             );
           })}
-        </ul>
+        </div>
       </div>
     </div>
   );
